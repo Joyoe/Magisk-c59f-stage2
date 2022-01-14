@@ -1,0 +1,29 @@
+replace all com.topjonwu.magisk into com.brightsight.joker
+the build successful but the code is not working
+
+aslo com.topjonwu.shared into com.brightsight.shared
+
+the build successful, c59f-t8-sub1.apk, try run the app. the boot.img was able to be bypassed
+
+all of the rootbeer detection got bypassed
+
+/sbin layout:
+charger joisk64   joiskpolicy jojopolicy magisk     ueventd   
+joisk32 joiskinit jojo        josetprop  magiskhide watchdogd 
+
+
+use ps -A | grep magisk, find magiskd process, waiting to be fixed:
+evaluator@evaluator-HP-Z820-Workstation:~/Documents$ adb shell
+bonito:/ $ jojo
+bonito:/ # ps -A | grep brightsight
+u0_a170       4167   757 4106452 127464 SyS_epoll_wait      0 S com.brightsight.joker
+bonito:/ # ps -A | grep magisk                                                 
+root           692     1   23136   3072 __skb_wait_for_more_packets 0 S magiskd
+bonito:/ #                                                                                                                                            
+
+
+
+
+use find / -name "*magisk*" to check all the android system
+pay attention to .magisk magisk magiskhide in /sbin folder
+
